@@ -7,17 +7,11 @@ class NewsAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     search_fields = ('title',)
 
-    def __str__(self):
-        return self.title
-
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'title')
     list_display_links = ('id', 'title')
     search_fields = ('title',)
-
-    def __str__(self):
-        return self.title
 
 
 admin.site.register(News, NewsAdmin)
