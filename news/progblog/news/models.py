@@ -6,7 +6,7 @@ class News(models.Model):
     content = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
+    photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     is_published = models.BooleanField(default=True)
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
 
@@ -14,6 +14,9 @@ class News(models.Model):
         verbose_name = 'News'
         verbose_name_plural = 'News'
         ordering = ['-created_at']
+
+    def __str__(self):
+        return self.title
     
 
 class Category(models.Model):
@@ -22,3 +25,6 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.title
